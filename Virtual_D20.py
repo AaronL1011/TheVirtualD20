@@ -9,7 +9,22 @@ def check_valid(n):
     if roll_check not in check_list:
         str.x = 69 #Check if user input is valid, if not, throw TypeError.
 def roll_dice(n):
-    
+    if user_roll[0] != 'd':
+        number, die = user_roll.split('d')
+        if (int(die) == 0):
+            return [(random.randint(0, 9) * 10) for n in range(int(number))]
+        elif int(die) == 10:
+            return [random.randint(0, 9) for n in range(int(number))]
+        else:
+            return [random.randint(1, int(die)) for n in range(int(number))]
+    else:
+        scrap, die = user_roll.split('d') #scrap variable used to placehold unwanted value from split.
+        if (int(die) == 0):
+            return [random.randint(0, 9) * 10]
+        elif int(die) == 10:
+            return [random.randint(0, 9)]
+        else:
+            return [random.randint(1, int(die))]
 
 while True:
     check_list = ['4', '6', '8', '10', '00', '12', '20']
