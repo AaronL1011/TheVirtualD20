@@ -5,7 +5,9 @@ print("Wizards, Shamans and Warriors alike, what shall the RNG gods generate for
 print("Tip: You can add a number to the front of your user_roll for multiple roles! (eg. 3d6)")
 
 def check_valid(n):
-    
+    scrap, roll_check = user_roll.split('d')
+    if roll_check not in check_list:
+        str.x = 69 #Check if user input is valid, if not, throw TypeError.
 def roll_dice(n):
     
 
