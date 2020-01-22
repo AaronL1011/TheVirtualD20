@@ -4,10 +4,10 @@ A console application for single and multiple dice rolls for tabletop gaming.
 
 ## Installation
 
-Use wget to download Virtual_D20.py and run in Terminal
+download Virtual_D20.py and run in Terminal
 
 ```bash
-wget 
+python3 Virtual_D20.py
 ```
 
 ## Mission Statement
