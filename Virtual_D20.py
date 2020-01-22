@@ -52,3 +52,4 @@ while True:
             print("I don't understand that roll.\n")
             
 print("Thanks for using The Virtual D20, stay strong Adventurer!")
+print("Created by Aaron Lewis. Github.com/AaronL1011")
