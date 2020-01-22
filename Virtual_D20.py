@@ -10,6 +10,28 @@ def roll_dice(n):
     
 
 while True:
-    
+    check_list = ['4', '6', '8', '10', '00', '12', '20']
+    print('                D4 | D6 | D8 | D10 | D00 | D12 | D20 or Q to quit')
+    user_roll = input()
+    user_roll = user_roll.lower()
+    if user_roll == 'q':
+       break
+    else:
+        try:
+            modifier = input('Modifier? Pos/neg number or leave blank\n')
+            if modifier == '': #Check if input for modifier is empty, if so, assign to 0 for sum later.
+                modifier = 0
+            modifier = int(modifier)
+            check_valid(user_roll)
+            print('May your die roll true...')
+            time.sleep(2)
+            user_roll = roll_dice(user_roll)
+            print(user_roll)
+            if modifier != 0:
+                user_roll.append(modifier)
+                user_roll = sum(user_roll)
+                print('Your rolls and modifier equal: ', user_roll)
+        except (ValueError, TypeError):
+            print("I don't understand that roll.\n")
             
 print("Thanks for using The Virtual D20, stay strong Adventurer!")
