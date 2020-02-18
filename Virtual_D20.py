@@ -6,32 +6,32 @@ print("Tip: You can add a number to the front of your user_roll for multiple rol
 
 def check_valid(n):  #Check if user input is valid, if not, throw TypeError.
 	check_list = ['4', '6', '8', '10', '00', '12', '20'] # List of valid inputs
-	scrap, roll_check = user_roll.split('d') #scrap variable used to hold any input before 'd'
+	scrapValue, roll_check = user_roll.split('d') #scrapValue variable used to placehold any input before 'd'
 	if roll_check not in check_list:
 		str.x = 69 
 def roll_dice(n): # Function to roll dice.
-	if user_roll[0] != 'd': # If first character of input is not d, dice roll will be a multi-roll.
-		number, die = user_roll.split('d')
-		if (int(die) == 0):
-			return [(random.randint(0, 9) * 10) for n in range(int(number))]
-		elif int(die) == 10:
-			return [random.randint(0, 9) for n in range(int(number))]
-		else:
-			return [random.randint(1, int(die)) for n in range(int(number))]
-	else:
-		scrap, die = user_roll.split('d') #scrap variable used to placehold unwanted value from split.
-		if (int(die) == 0):
+	if user_roll[0] != 'd': # If first character of input is not d, user is rolling multiple die.
+		numberOfDie, die = user_roll.split('d')
+		if (int(die) == 0): # Special case for D00 Roles, only available rolls are percentiles from 00 - 90
+			return [(random.randint(0, 9) * 10) for n in range(int(numberOfDie))]
+		elif int(die) == 10: # Special case where die starts at 0 and ends at 9
+			return [random.randint(0, 9) for n in range(int(numberOfDie))]
+		else: # Normal dice rolls 1 - dice number
+			return [random.randint(1, int(die)) for n in range(int(numberOfDie))]
+	else: # Single dice roll
+		scrapValue, die = user_roll.split('d') #scrapValue variable used to placehold unwanted value from split.
+		if (int(die) == 0): # Special case for D00 Roles, only available rolls are percentiles from 00 - 90
 			return [random.randint(0, 9) * 10]
-		elif int(die) == 10:
+		elif int(die) == 10: # Special case where die starts at 0 and ends at 9
 			return [random.randint(0, 9)]
-		else:
+		else: 
 			return [random.randint(1, int(die))]
 
 while True:
 	print('                D4 | D6 | D8 | D10 | D00 | D12 | D20 or Q to quit') # Awkward way to format print, justification wasn't working.
 	user_roll = input()
 	user_roll = user_roll.lower()
-	if user_roll == 'q':
+	if user_roll == 'q': # Escape while loop when user decides to quit
 	   break
 	else:
 		try:
